@@ -9,8 +9,11 @@
                 <br>
                 <br>
             </vs-col>
+            <vs-col w="12" xs="12">
+                <tareasFiltrar v-model="filtro"></tareasFiltrar>
+            </vs-col>
             <vs-col w="6" xs="12" vs-type="flex">
-                <tareasListar :tareas="tareas" @eliminar-tarea="removerTarea" @editar-tarea="editarTarea"></tareasListar>
+                <tareasListar :tareas="obtenerTareasFiltradas" @eliminar-tarea="removerTarea" @editar-tarea="editarTarea"></tareasListar>
             </vs-col>
             <vs-col w="1" xs="12"><br/></vs-col>
             <vs-col w="2" xs="12" vs-type="flex">
@@ -24,21 +27,29 @@
 <script>
 import tareasListar from './TareasListar';
 import tareasNuevas from './TareasNueva';
+import tareasFiltrar from './TareasFiltrar';
 import navComponent from '../nav/Nav';
 import 'material-icons/iconfont/material-icons.css';
 
 export default {
     name:'Tareas',
     components:{
+        tareasListar,
         tareasNuevas,
+        tareasFiltrar,
         navComponent,
-        tareasListar
+    },
+    computed: {
+        obtenerTareasFiltradas(){
+            return this.tareas.filter(tarea => tarea.toLowerCase().indexOf(this.filtro) !== -1);
+        }
     },
     data(){
         return {
             page: 1,
             max: 5,
             tareas: ['Aprender Vue','Aprender Vuex','Aprender Vuetify'],
+            filtro:'',
         }
     },
     methods: {

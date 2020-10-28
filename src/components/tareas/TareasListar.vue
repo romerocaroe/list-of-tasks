@@ -2,7 +2,7 @@
     <div>
         <vs-table striped>
             <template #header>
-                <vs-input v-model="search" border placeholder="Search" />
+                <vs-input v-model="obtenerTareasFiltradas" border placeholder="Search" />
             </template>
             <template #thead>
                 <vs-tr>
@@ -91,7 +91,7 @@ import 'material-icons/iconfont/material-icons.css';
 import 'boxicons';
 
 export default {
-    name: 'TareasListaer',
+    name: 'TareasListar',
     props: {
         tareas: {}
     },
@@ -105,7 +105,12 @@ export default {
             this.$emit('editar-tarea',this.editando,this.texto);
             this.editando = null;
             this.texto = '';
+        },
+        obtenerTareasFiltradas(){
+            this.tareas.filter(tarea => tarea.toLowerCase().indexOf(this.filtro) !== -1);
         }
+    },
+    computed: {
     },
     data(){
         return {
