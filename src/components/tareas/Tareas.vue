@@ -9,14 +9,19 @@
                 <br>
                 <br>
             </vs-col>
-            <vs-col w="12" xs="12">
-                <tareasFiltrar v-model="filtro"></tareasFiltrar>
+            <vs-col w="1" xs="12"><br/></vs-col>
+            <vs-col w="2" xs="12" vs-type="flex">
             </vs-col>
-            <vs-col w="6" xs="12" vs-type="flex">
+        </vs-row>
+        <br>
+        <vs-row w="12" justify="center" class="header">
+            <vs-col w="6" xs="12">
                 <tareasListar :tareas="obtenerTareasFiltradas" @eliminar-tarea="removerTarea" @editar-tarea="editarTarea"></tareasListar>
             </vs-col>
             <vs-col w="1" xs="12"><br/></vs-col>
             <vs-col w="2" xs="12" vs-type="flex">
+                <br/>
+                <tareasFiltrar v-model="filtro"></tareasFiltrar>
                 <br/>
                 <tareasNuevas @nuevaTarea="agregarTarea"></tareasNuevas>
             </vs-col>
@@ -48,7 +53,7 @@ export default {
         return {
             page: 1,
             max: 5,
-            tareas: ['Aprender Vue','Aprender Vuex','Aprender Vuetify'],
+            tareas: ['Comprar comida','Hacer curso de inglés','Arreglar ventana','Conseguir cuaderno','Llamar médico','Cargar sube'],
             filtro:'',
         }
     },

@@ -1,12 +1,9 @@
 <template>
-    <div>
+    <div class="listado">
         <vs-table striped>
-            <template #header>
-                <vs-input v-model="obtenerTareasFiltradas" border placeholder="Search" />
-            </template>
             <template #thead>
                 <vs-tr>
-                    <vs-th sort @click="tareas = $vs.sortData($event ,tareas, tarea)">
+                    <vs-th>
                     Tareas:
                     </vs-th>
                     <vs-th>
@@ -17,11 +14,11 @@
                 <vs-tr
                     icon="chevron_right"
                     :key="index"
-                    v-for="(tarea, index) in $vs.getPage($vs.getSearch(tareas, search), page, max) "
+                    v-for="(tarea, index) in $vs.getPage(tareas, page, max) "
                     :data="tarea"
                 >
                     <vs-row w="12">
-                        <vs-col w="10" md="10" >
+                        <vs-col w="10" md="6" >
                             <vs-td>
                                 <box-icon name='chevrons-right' size='xs'></box-icon> {{ tarea }}
                             </vs-td>
@@ -54,16 +51,17 @@
                         <template #expand v-if="editando === index">
                             <div class="con-content">
                                 <vs-row w="12" justify="left" align="left">
-                                    <vs-col w="4" xs="12">
+                                    <vs-col w="4">
                                         <vs-input
                                             primary
                                             v-model="texto"
+                                            readonly
                                             state="primary"
                                             type="text"
                                             placeholder="Editar tarea"
                                             @keyup.enter="emititTareaEditada()"  />
                                     </vs-col>
-                                    <vs-col w="2" xs="12">
+                                    <vs-col w="2">
                                         <vs-button
                                             icon
                                             color="medium"
@@ -80,7 +78,7 @@
                 </vs-tr>
             </template>
             <template #footer>
-                <vs-pagination v-model="page" :length="$vs.getLength($vs.getSearch(tareas, search), max)" />
+                <vs-pagination v-model="page" :length="$vs.getLength(tareas, max)" />
             </template>
         </vs-table>
     </div>
@@ -120,9 +118,7 @@ export default {
             active: 0,
             page: 1,
             max: 5,
-            search:'',
             editando: null,
-            selected: [],
             texto:'',
         }
     }

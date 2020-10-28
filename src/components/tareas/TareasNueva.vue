@@ -6,6 +6,7 @@
                 v-model="tarea"
                 @keyup.enter="agregarTarea()"
             />
+            <br/>
             <vs-button 
                 gradient
                 :active="active == 0" 
@@ -13,6 +14,11 @@
             >
                 Agregar
             </vs-button>
+            <br/>
+            <v-card>
+                
+            </v-card>
+
         </vs-col>
     </vs-row>
 </template>
@@ -23,6 +29,7 @@ export default {
     data(){
         return {
             tarea: '',
+            active:0,
         }
     },
     methods: {

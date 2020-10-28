@@ -6,7 +6,10 @@
             </template>
             <template #right>
                 <vs-navbar-item :active="active == 'primary'" id="primary">
-                    Primary
+                    Introducción
+                </vs-navbar-item>
+                <vs-navbar-item :active="active == 'primary'" id="primary">
+                    Tareas
                 </vs-navbar-item>
             </template>
         </vs-navbar>
