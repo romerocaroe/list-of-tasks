@@ -55,7 +55,6 @@
                                         <vs-input
                                             primary
                                             v-model="texto"
-                                            readonly
                                             state="primary"
                                             type="text"
                                             placeholder="Editar tarea"

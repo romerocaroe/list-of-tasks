@@ -6,7 +6,6 @@
 
 <script>
 import Tareas from './components/tareas/Tareas';
-
 export default {
   name: 'App',
   components:{

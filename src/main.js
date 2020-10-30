@@ -4,11 +4,13 @@ import 'boxicons';
 import Vuesax from 'vuesax'
 import 'material-icons/iconfont/material-icons.css';
 import 'vuesax/dist/vuesax.css' //Vuesax styles
+import vuetify from './plugins/vuetify';
 
 Vue.use(Vuesax)
 
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
+  vuetify,
+  render: h => h(App)
 }).$mount('#app')

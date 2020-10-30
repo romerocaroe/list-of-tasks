@@ -6,19 +6,14 @@
                 v-model="tarea"
                 @keyup.enter="agregarTarea()"
             />
-            <br/>
             <vs-button 
+                class="nueva-tarea"
                 gradient
                 :active="active == 0" 
                 @click="active = 0,agregarTarea()"
             >
                 Agregar
             </vs-button>
-            <br/>
-            <v-card>
-                
-            </v-card>
-
         </vs-col>
     </vs-row>
 </template>
@@ -47,5 +42,7 @@ export default {
 </script>
 
 <style scoped>
-
+.nueva-tarea {
+    margin-top:10px;
+}
 </style>
